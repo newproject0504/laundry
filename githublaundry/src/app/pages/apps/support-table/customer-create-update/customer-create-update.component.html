@@ -1,0 +1,53 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+  <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+    <img *ngIf="form.get('imageSrc').value" [src]="form.get('imageSrc').value" class="avatar mr-5">
+
+    <h2 *ngIf="form.get('firstName').value || form.get('lastName').value"
+        class="headline m-0"
+        fxFlex="auto">{{ form.get('firstName').value + ' ' + form.get('lastName').value }}</h2>
+    <h2 *ngIf="!form.get('firstName').value && !form.get('lastName').value"
+        class="headline m-0"
+        fxFlex="auto">Create Support Ticket</h2>
+
+    <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
+      <mat-icon [icIcon]="icMoreVert"></mat-icon>
+    </button>
+
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+      <mat-icon [icIcon]="icClose"></mat-icon>
+    </button>
+  </div>
+
+  <mat-divider class="-mx-6 text-border"></mat-divider>
+
+  <mat-dialog-content fxLayout="column">
+
+    <mat-form-field class="flex-auto">
+      <mat-label>Enter Your Title</mat-label>
+      <textarea formControlName="notes" placeholder="Enter Your Title" matInput></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">CANCEL</button>
+    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit">SEND</button>
+    <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit">UPDATE CUSTOMER</button>
+  </mat-dialog-actions>
+</form>
+
+<mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icPrint"></mat-icon>
+    <span>Print</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icDownload"></mat-icon>
+    <span>Export</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icDelete"></mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

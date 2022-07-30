@@ -1,0 +1,111 @@
+<vex-secondary-toolbar current="Profile Section">
+  <vex-breadcrumbs [crumbs]="['Profile', 'Profile Section']" fxFlex="auto"></vex-breadcrumbs>
+
+  <button class="ml-2" color="primary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+  </button>
+</vex-secondary-toolbar>
+
+
+<div [@stagger]="true" class="p-gutter" vexContainer>
+
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+       <div @fadeInUp class="card overflow-hidden" fxFlex="auto">
+      <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Pin Request</h2>
+      </div>
+
+      <div class="px-6 py-4" fxLayout="column">
+         <mat-form-field>
+          <mat-label>Package</mat-label>
+          <mat-select fxFlex="auto">
+            <mat-option value="new">New York</mat-option>
+            <mat-option>Washington</mat-option>
+            <mat-option>Florida</mat-option>
+          </mat-select>
+        </mat-form-field>
+      <mat-form-field fxFlex="auto">
+            <mat-label>Pin Quantity</mat-label>
+            <input matInput placeholder="Enter Pin Quantity"required>
+          </mat-form-field>
+	
+
+      </div>
+    </div>
+
+    <div @fadeInUp class="card overflow-hidden" fxFlex="auto">
+      <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Pin Request Banking Details</h2>
+      </div>
+
+      <div class="px-6 py-4" fxLayout="column">
+     <mat-form-field>
+          <mat-label>Select Payment Mode</mat-label>
+          <mat-select fxFlex="auto">
+            <mat-option value="new">New York</mat-option>
+            <mat-option>Washington</mat-option>
+            <mat-option>Florida</mat-option>
+          </mat-select>
+        </mat-form-field>
+      <mat-form-field fxFlex="auto">
+            <mat-label>Reference Number</mat-label>
+            <input matInput placeholder="Enter Reference Number"required>
+          </mat-form-field>
+     <mat-form-field>
+          <mat-label>Select Bank</mat-label>
+          <mat-select fxFlex="auto">
+            <mat-option value="new">New York</mat-option>
+            <mat-option>Washington</mat-option>
+            <mat-option>Florida</mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+      </div>
+    </div>
+	
+	
+	
+	    <div @fadeInUp class="card overflow-hidden" fxFlex="auto">
+      <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Deposit Date-Time And Receipt </h2>
+      </div>
+
+      <div class="px-6 py-4" fxLayout="column">
+       <mat-form-field fxFlex="auto">
+          <mat-label>Deposit Date</mat-label>
+          <input [matDatepicker]="datepickerRef" matInput>
+          <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #datepickerRef></mat-datepicker>
+          
+        </mat-form-field>
+      <mat-form-field fxFlex="auto">
+            <mat-label>Deposit Time</mat-label>
+            <input matInput placeholder="Enter Deposit Time"required>
+          </mat-form-field>
+	  <mat-form-field fxFlex="auto">
+            <mat-label>Image</mat-label>
+            <input matInput placeholder="Enter Reference Number"required>
+          </mat-form-field>
+      
+
+     
+      </div>
+	  
+    </div>
+	
+	
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+          <button mat-button type="button">CANCEL</button>
+          <button color="primary" mat-raised-button type="button">SUBMIT</button>
+        </div>

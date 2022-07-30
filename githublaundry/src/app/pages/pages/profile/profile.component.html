@@ -1,0 +1,153 @@
+<vex-secondary-toolbar current="Profile Section">
+  <vex-breadcrumbs [crumbs]="['Profile', 'Profile Section']" fxFlex="auto"></vex-breadcrumbs>
+
+  <button class="ml-2" color="primary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+  </button>
+</vex-secondary-toolbar>
+
+
+<div [@stagger]="true" class="p-gutter" vexContainer>
+
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div @fadeInUp class="card" fxFlex="auto">
+      <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Edit Profile</h2>
+      </div>
+
+      <div class="px-6 py-4" fxLayout="column">
+     
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+          <mat-form-field fxFlex="auto">
+            <mat-label> Name</mat-label>
+			
+            <input matInput placeholder="Enter Name"required>
+			<mat-icon [icIcon]="icPerson" matSuffix></mat-icon>
+          </mat-form-field>
+          <mat-form-field fxFlex="auto">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="Enter Mobile Number"required>
+			<mat-icon [icIcon]="icSmartphone" matSuffix></mat-icon>
+          </mat-form-field>
+        </div>
+		    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+          <mat-form-field fxFlex="auto">
+            <mat-label> Email ID</mat-label>
+            <input matInput placeholder="Enter Email ID"required>
+			<mat-icon [icIcon]="icCamera" matSuffix></mat-icon>
+          </mat-form-field>
+        <mat-form-field fxFlex="auto">
+          <mat-label>Birthdate</mat-label>
+          <input [matDatepicker]="datepickerRef"placeholder="Enter Date Of Birth" matInput>
+          <mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #datepickerRef></mat-datepicker>
+        
+        </mat-form-field>
+        </div>
+
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input  matInput placeholder="Enter Address"required> 
+        </mat-form-field>
+		
+    <mat-form-field class="flex-auto">
+      <mat-label>Notes</mat-label>
+      <textarea formControlName="notes" matInput></textarea>
+    </mat-form-field>
+			    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+          <mat-form-field fxFlex="auto">
+            <mat-label> Pincode</mat-label>
+            <input matInput placeholder="Enter Pincode"required>
+          </mat-form-field>
+		  
+	
+          <mat-radio-group fxLayout="row" fxLayoutGap="16px" fxFlex="auto" style=" margin-top: 13px!importatant;  margin-left: 21px!importatant;">
+		         <mat-label> Gender</mat-label>
+            <mat-radio-button [checked]="true" value="Apples">Male</mat-radio-button>
+            <mat-radio-button value="Peaches">Female</mat-radio-button>
+          </mat-radio-group>
+   
+      
+        </div>
+        <!--<mat-form-field>
+          <mat-label>State</mat-label>
+          <mat-select>
+            <mat-option>New York</mat-option>
+            <mat-option>Washington</mat-option>
+            <mat-option>Florida</mat-option>
+          </mat-select>
+        </mat-form-field>-->
+
+        <!--<mat-form-field>
+          <mat-label>Password</mat-label>
+          <input [type]="inputType" matInput required value="Hello!">
+          <button (click)="togglePassword()" mat-icon-button matSuffix type="button">
+            <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
+            <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+          </button>
+          <mat-hint>Try clicking the eye to toggle the visibility.</mat-hint>
+        </mat-form-field>-->
+
+
+
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+          <button mat-button type="button">CANCEL</button>
+          <button color="primary" mat-raised-button type="button">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+
+    <div @fadeInUp class="card overflow-hidden" fxFlex="auto">
+      <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Change Password</h2>
+      </div>
+
+      <div class="px-6 py-4" fxLayout="column">
+      <mat-form-field>
+          <mat-label>Old Password</mat-label>
+          <input [type]="inputType" placeholder="Enter Old Password" matInput required value="Hello!">
+          <button (click)="togglePassword()" mat-icon-button matSuffix type="button">
+            <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
+            <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+          </button>
+        
+        </mat-form-field>
+<mat-form-field>
+          <mat-label> New Password</mat-label>
+          <input [type]="inputType" placeholder="Enter New Password" matInput required value="Hello!">
+          <button (click)="togglePassword()" mat-icon-button matSuffix type="button">
+            <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
+            <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+          </button>
+    
+        </mat-form-field>
+		<mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input [type]="inputType" placeholder="Enter Confirm Password"matInput required value="Hello!">
+          <button (click)="togglePassword()" mat-icon-button matSuffix type="button">
+            <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
+            <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+          </button>
+          
+        </mat-form-field>
+      
+
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+          <button mat-button type="button">CANCEL</button>
+          <button color="primary" mat-raised-button type="button">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>

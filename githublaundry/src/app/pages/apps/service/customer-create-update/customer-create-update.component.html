@@ -1,0 +1,115 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+  <div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+    <img *ngIf="form.get('imageSrc').value" [src]="form.get('imageSrc').value" class="avatar mr-5">
+
+    <h2 *ngIf="form.get('firstName').value || form.get('lastName').value"
+        class="headline m-0"
+        fxFlex="auto">{{ form.get('firstName').value + ' ' + form.get('lastName').value }}</h2>
+    <h2 *ngIf="!form.get('firstName').value && !form.get('lastName').value"
+        class="headline m-0"
+        fxFlex="auto">Create Service</h2>
+
+    <button [matMenuTriggerFor]="settingsMenu" class="text-secondary" mat-icon-button type="button">
+      <mat-icon [icIcon]="icMoreVert"></mat-icon>
+    </button>
+
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+      <mat-icon [icIcon]="icClose"></mat-icon>
+    </button>
+  </div>
+
+  <mat-divider class="-mx-6 text-border"></mat-divider>
+
+
+  
+  <mat-dialog-content fxLayout="column" style="width: 40vw !important;">
+    <!-- <div class="flex flex-col sm:flex-row">
+      <mat-form-field class="mt-6 flex-auto">
+        <mat-label>Service Name</mat-label>
+        <input cdkFocusInitial formControlName="firstName" placeholder="Enter Service Name" matInput>
+
+        <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
+      </mat-form-field>
+
+    </div> -->
+
+    <!-- <div class="flex flex-col sm:flex-row mt-6 mb-1">
+    <div fxLayout="column" fxLayoutGap="20px">
+      <mat-label>Service Name</mat-label>
+    
+      <mat-radio-group color="accent" fxLayout="row" fxLayoutGap="20px">
+        <mat-radio-button [checked]="true" color="primary" value="primary">Men
+        </mat-radio-button>
+        <mat-radio-button color="accent" value="accent">Women</mat-radio-button>
+        <mat-radio-button color="warn" value="warn">Kids</mat-radio-button>
+        <mat-radio-button color="other" value="other">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div> -->
+
+<!-- 
+  <div class="flex flex-col sm:flex-row mt-6 mb-1">
+    <div fxLayout="column" fxLayoutGap="20px">
+      <mat-label>Service Name</mat-label>
+    
+      <div color="accent" fxLayout="row" fxLayoutGap="20px">
+        <mat-checkbox [checked]="true" color="primary">Men</mat-checkbox>
+        <mat-checkbox [checked]="false" color="accent">Women </mat-checkbox>
+        <mat-checkbox [checked]="false" color="warn">Kids</mat-checkbox>
+        <mat-checkbox [checked]="false" color="warn">Others</mat-checkbox>
+    </div>
+  </div>
+  </div>  -->
+
+
+  <mat-form-field>
+    <mat-label>Service Name</mat-label>
+    <mat-select  #select multiple>
+      <div class="select-all">
+          <mat-checkbox [(ngModel)]="allSelected"
+                          [ngModelOptions]="{standalone: true}"
+                          (change)="toggleAllSelection()">Select All</mat-checkbox>
+      </div>
+      <mat-option (click)="optionClick()" *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- <div class="flex flex-col sm:flex-row mt-6 mb-1">
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-label>Category Name</mat-label>
+
+        <mat-checkbox [checked]="true" color="primary">Primary Color</mat-checkbox>
+        <mat-checkbox [checked]="true" color="accent">Accent Color</mat-checkbox>
+        <mat-checkbox [checked]="true" color="warn">Warn Color</mat-checkbox>
+    </div>
+  </div> -->
+
+  <mat-divider class=" mt-6 mb-1 text-border"></mat-divider>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">CANCEL</button>
+    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit">CREATE SERVICE</button>
+    <button *ngIf="isUpdateMode()" color="primary" mat-button type="submit">UPDATE SERVICE</button>
+  </mat-dialog-actions>
+</form>
+
+<mat-menu #settingsMenu="matMenu" xPosition="before" yPosition="below">
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icPrint"></mat-icon>
+    <span>Print</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icDownload"></mat-icon>
+    <span>Export</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon [icIcon]="icDelete"></mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>
